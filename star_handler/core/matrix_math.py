@@ -294,8 +294,8 @@ def find_nearest_neighbor_distances(coords_query: np.ndarray, coords_target: np.
             return np.full(coords_query.shape[0], np.inf)
         
         tree_target = KDTree(coords_target)
-        distances, neighbor_coords = tree_target.query(coords_query, k=1)
-        return distances, neighbor_coords
+        distances, neighbor_index = tree_target.query(coords_query, k=1)
+        return distances, neighbor_index
     except Exception as e:
         raise MathError(f"Nearest neighbor distance calculation failed: {str(e)}")
 
